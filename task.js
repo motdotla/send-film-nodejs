@@ -19,12 +19,22 @@ request.get({url: 'http://goodfil.ms/graph/graph.json', json:true}, function (er
     var random          = _.random(0, filtered_points.length-1);
  
     var film            = filtered_points[random];
-    var html            = "<p><img src='"+film.image+"'/></p><h2>"+film.title+"</h2><p><a href='http://goodfil.ms"+film.url+"'>"+film.url+"</a></p>";
+
+    var file            = {
+      cid           : 'film_poster',
+      filename      : 'poster.png',
+      url           : film.image
+    };
+
+    var html            = "<p><img src='cid:film_poster'></p>" +
+                          "<h2>"+film.title+"</h2>" +
+                          "<p><a href='http://goodfil.ms"+film.url+"'>"+film.url+"</a></p>";
 
     sendgrid.send({
       to          : to, 
       from        : to, 
       subject     : '[send-film] delivery',
+      files       : [file],
       html        : html 
     }, function(success, message) {
       if (!success) {
