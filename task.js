@@ -28,7 +28,8 @@ request.get({url: 'http://goodfil.ms/graph/graph.json', json:true}, function (er
 
     var html            = "<p><img src='cid:film_poster'></p>" +
                           "<h2>"+film.title+"</h2>" +
-                          "<p><a href='http://goodfil.ms"+film.url+"'>"+film.url+"</a></p>";
+                          "<p><a href='http://goodfil.ms"+film.url+"'>"+film.url+"</a></p>" +
+                          "<p><a href=''></a>";
 
     sendgrid.send({
       to          : to, 
