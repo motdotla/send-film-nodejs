@@ -38,6 +38,7 @@ request.get({url: 'http://goodfil.ms/graph/graph.json', json:true}, function (er
       files       : [file],
       html        : html 
     }
+    console.log(payload);
 
     sendgrid.send(payload, function(success, message) {
       if (!success) {
