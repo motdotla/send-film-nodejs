@@ -7,9 +7,7 @@ var to                  = process.env.TO;
 var sendgrid_username   = process.env.SENDGRID_USERNAME; 
 var sendgrid_password   = process.env.SENDGRID_PASSWORD; 
 
-var SendGrid            = require('sendgrid').SendGrid;
-var sendgrid            = new SendGrid(sendgrid_username, sendgrid_password);
-
+var sendgrid            = require('sendgrid')(sendgrid_username, sendgrid_password);
 var request             = require('request');
 var _                   = require('underscore');
 
@@ -40,12 +38,9 @@ request.get({url: 'http://goodfil.ms/graph/graph.json', json:true}, function (er
     }
     console.log(payload);
 
-    sendgrid.send(payload, function(success, message) {
-      if (!success) {
-        console.log(message);
-      } else {
-        console.log("Email sent with content: "+html);
-      }
+    sendgrid.send(payload, function(err, json) {
+      if (err) { return console.error(err); }
+      console.log("Email sent with content: "+json);
 
       process.exit();
     });
