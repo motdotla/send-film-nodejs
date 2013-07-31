@@ -30,13 +30,12 @@ request.get({url: 'http://goodfil.ms/graph/graph.json', json:true}, function (er
                           "<p><a href=''></a>";
     
     var payload     = {
-      to          : to, 
+      to          : [to, 'scott@scottmotte.com'], 
       from        : to, 
       subject     : '[send-film] delivery',
       files       : [file],
       html        : html 
     }
-    console.log(payload);
 
     sendgrid.send(payload, function(err, json) {
       if (err) { return console.error(err); }
