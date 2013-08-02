@@ -5,6 +5,8 @@ Delivers a nightly email with a movie you can watch.
 ## Usage
 
 ```bash
+git clone git@github.com:scottmotte/send-film-nodejs
+cd send-film-nodejs
 heroku create
 heroku addons:add scheduler:standard
 heroku addons:add sendgrid:starter
