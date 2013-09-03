@@ -9,6 +9,7 @@
   "description": "Delivers a nightly email of a movie you can watch",
   "dependencies": {
     "dotenv": "0.0.3",
+    "goodfilms-graph": "0.0.1",
     "hapi": "1.8.2",
     "request": "2.21.0",
     "sendgrid": "0.3.0-rc.1.7",
